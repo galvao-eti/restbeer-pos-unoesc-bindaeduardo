@@ -55,4 +55,26 @@ class IndexController extends AbstractActionController
 
         return new ViewModel(['beerForm' => $form]);
     }
+
+    public function updateAction()
+    {
+        $form = $this->getServiceLocator()->get('Application\Form\Beer');
+        $tableGateway = $this->getServiceLocator()->get('Application\Model\BeerTableGateway');
+        $beer_id = (int) $this->params()->fromRoute('id', 0);
+        $beer = $tableGateway->get($beer_id);
+        $form->setData((array)$beer);
+        $form->setAttribute('action', '/insert');
+        $form->get('send')->setAttribute('value', 'Salvar');
+        return new ViewModel(['beerForm' => $form]);
+    }
+
+    public function deleteAction()
+    {
+        $tableGateway = $this->getServiceLocator()->get('Application\Model\BeerTableGateway');
+        $beer_id = (int) $this->params()->fromRoute('id', 0);
+        $beer = $tableGateway->delete($beer_id);
+        return $this->redirect()->toUrl('/');
+    }
+
+
 }
