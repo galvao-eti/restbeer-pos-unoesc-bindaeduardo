@@ -14,14 +14,14 @@ class Beer extends Form
         $this->add([
             'name' => 'name',
             'options' => [
-                'label' => 'Nome da Cerveja',
+                'label' => 'Beer Name',
             ],
             'type'  => 'Text',
         ]);
         $this->add([
             'name' => 'style',
             'options' => [
-                'label' => 'Estilo da Cerveja',
+                'label' => 'Beer Style',
             ],
             'type'  => 'Text',
         ]);
@@ -29,7 +29,7 @@ class Beer extends Form
          $this->add([
             'name' => 'img',
             'options' => [
-                'label' => 'Imagem da Cerveja',
+                'label' => 'Beer Image',
             ],
             'type'  => 'Text',
         ]);
